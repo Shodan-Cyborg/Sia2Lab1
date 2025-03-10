@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -25,6 +26,31 @@ return new class extends Migration
             $table->foreign('service_id')->references('id')->on('service')->onDelete('cascade')->onUpdate('cascade');
 
         });
+
+        DB::table('transaction')->insert([
+            [
+                'user_id' => 1,
+                'product_id' => 1,
+                'service_id' => 1,
+                'transaction-date' => now(),
+                'payment' => 500.00
+            ],
+            [
+                'user_id' => 2,
+                'product_id' => 2,
+                'service_id' => 2,
+                'transaction-date' => now(),
+                'payment' => 400.00
+            ],
+            [
+                'user_id' => 3,
+                'product_id' => 3,
+                'service_id' => 3,
+                'transaction-date' => now(),
+                'payment' => 500.00
+            ]
+        ]);
+
     }
 
     /**

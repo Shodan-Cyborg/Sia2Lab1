@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -20,6 +21,24 @@ return new class extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        DB::table('miscellaneous')->insert([
+            [
+                'user_id' => 1,
+                'misc_name' => 'Banana Teracotta Pie',
+                'misc_budget' => 800,
+            ],
+            [
+                'user_id' => 2,
+                'misc_name' => 'Chop Suey',
+                'misc_budget' => 300,
+            ],
+            [
+                'user_id' => 3,
+                'misc_name' => 'Internet Load',
+                'misc_budget' => 500,
+            ]
+        ]);
     }
 
     /**
